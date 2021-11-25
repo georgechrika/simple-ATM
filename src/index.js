@@ -1,5 +1,6 @@
 import terminal from "./js/terminal";
 import drawBalance from "./js/drawBalance";
+import * as keyboard from "./js/terminalKeyboard";
 
 //banknotes array of objects
 
