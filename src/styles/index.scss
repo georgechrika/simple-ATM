@@ -1,10 +1,92 @@
-* {
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  font-size: 16px;
-  color: #fefefe;
-}
+@forward "reset.scss";
+@use "variables.scss" as *;
+
 body {
-  background-color: rgb(0, 131, 131);
+  background-color: $main-bg;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info {
+  color: $main-color;
+
+  h1 {
+    color: $main-color;
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+    border: 5px solid $main-color;
+    tr {
+      border-bottom: 1px solid white;
+    }
+    td {
+      padding: 5px;
+    }
+  }
+}
+.atm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 20vw;
+  width: 50vw;
+  background-color: $white-bg;
+  border-radius: 10px;
+  user-select: none;
+
+  span {
+    font-size: 40px;
+    color: $secondary-color;
+  }
+
+  input[type="text"] {
+    width: 50%;
+    height: 80px;
+    font-size: 40px;
+    border: none;
+    cursor: default;
+    user-select: none;
+    text-align: center;
+    color: $secondary-bg;
+    border: 1px solid $main-bg;
+    pointer-events: none;
+  }
+
+  input[type="text"]:focus {
+    outline: none;
+  }
+}
+.keyboard {
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-gap: 10px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . .";
+  button {
+    width: 50px;
+    height: 50px;
+    color: $main-color;
+    background-color: $secondary-bg;
+    &:hover {
+      background-color: #c78d44;
+    }
+  }
 }
