@@ -1,4 +1,4 @@
-# Simple ATM application
+# Simple terminal application
 
 ## to run this project on localhost follow this steps:
 
