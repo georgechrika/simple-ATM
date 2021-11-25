@@ -8,6 +8,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.wrapper {
+  min-width: 350px;
+}
 .info {
   color: $main-color;
 
@@ -39,7 +42,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   height: 20vw;
   width: 50vw;
   background-color: $white-bg;
@@ -49,6 +52,7 @@ body {
   span {
     font-size: 40px;
     color: $secondary-color;
+    margin-bottom: 20px;
   }
 
   input[type="text"] {
@@ -88,5 +92,31 @@ body {
     &:hover {
       background-color: #c78d44;
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+    width: 100%;
+  }
+  .atm {
+    flex-direction: column;
+  }
+  .display {
+    width: 90%;
+    min-height: 250px;
+  }
+  .keyboard {
+    padding-left: 0;
+    padding-top: 20px;
+    button {
+      width: 100px;
+      height: 40px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .display span {
+    font-size: 20px;
   }
 }
