@@ -1,5 +1,6 @@
 @forward "reset.scss";
 @use "variables.scss" as *;
+@use "mixins.scss" as *;
 
 body {
   background-color: $main-bg;
@@ -10,6 +11,10 @@ body {
 }
 .wrapper {
   min-width: 350px;
+  @include tablet {
+    width: 100%;
+    padding: 20px;
+  }
 }
 .info {
   color: $main-color;
@@ -37,6 +42,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  @include tablet {
+    flex-direction: column;
+  }
 }
 .display {
   display: flex;
@@ -48,11 +56,17 @@ body {
   background-color: $white-bg;
   border-radius: 10px;
   user-select: none;
-
+  @include tablet {
+    width: 100%;
+    min-height: 250px;
+  }
   span {
     font-size: 40px;
     color: $secondary-color;
     margin-bottom: 20px;
+    @include mobile {
+      font-size: 20px;
+    }
   }
 
   input[type="text"] {
@@ -84,6 +98,10 @@ body {
     ". . ."
     ". . ."
     ". . .";
+  @include tablet {
+    padding-left: 0;
+    padding-top: 20px;
+  }
   button {
     width: 60px;
     height: 60px;
@@ -92,31 +110,9 @@ body {
     &:hover {
       background-color: #c78d44;
     }
-  }
-}
-
-@media (max-width: 1200px) {
-  .wrapper {
-    width: 100%;
-  }
-  .atm {
-    flex-direction: column;
-  }
-  .display {
-    width: 90%;
-    min-height: 250px;
-  }
-  .keyboard {
-    padding-left: 0;
-    padding-top: 20px;
-    button {
+    @include tablet {
       width: 100px;
       height: 40px;
     }
-  }
-}
-@media (max-width: 600px) {
-  .display span {
-    font-size: 20px;
   }
 }
