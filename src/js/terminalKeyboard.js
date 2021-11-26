@@ -12,25 +12,40 @@ keyboardButtons.forEach((button) => {
       displayControls.clearInput();
       return null;
     }
-    displayControls.enterNumber(event);
+
+    const value = event.target.getAttribute("data-value");
+    displayControls.enterNumber(value);
   });
 });
+
+const numberArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (numberArray.indexOf(event.key) != -1) {
+      displayControls.enterNumber(event.key);
+    }
+    if (event.code == "Backspace") {
+      displayControls.clearInput();
+    }
+  },
+  false
+);
 
 const displayControls = {
   clearInput: function () {
     displayInput.value = "";
   },
-  enterNumber: function (button) {
-    const buttonValue = button.target.getAttribute("data-value");
+  enterNumber: function (value) {
+    if (displayInput.value == "" && value == "0") return null;
 
-    if (displayInput.value == "" && buttonValue == "0") return null;
+    if (this.checkIsMaxAmount(value)) return null;
 
-    if (this.checkIsMaxAmount(buttonValue)) return null;
-
-    displayInput.value += buttonValue;
+    displayInput.value += value;
   },
-  checkIsMaxAmount: function (buttonValue) {
-    if (displayInput.value + buttonValue > 1000) {
+  checkIsMaxAmount: function (value) {
+    if (displayInput.value + value > 1000) {
       notifyUser("max amount is 1000");
       return true;
     }
