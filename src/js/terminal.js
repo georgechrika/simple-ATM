@@ -7,6 +7,7 @@ const terminal = {
     lari50: { amount: 0, accumulatorValue: 50, geoName: "50 ლარი" },
     lari100: { amount: 0, accumulatorValue: 100, geoName: "100 ლარი" },
   },
+  banknotesSorted: ["lari100", "lari50", "lari20", "lari10", "lari5", "lari"],
   refill: function (banknotes) {
     banknotes.forEach((banknote) => {
       this.banknotes[banknote.name].amount = banknote.amount;

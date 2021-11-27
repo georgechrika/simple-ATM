@@ -1,4 +1,5 @@
-import { notifyUser } from "./helpers";
+import { notifyUser, inputIsEmpty } from "./helpers";
+import calculateChange from "./calculateChange";
 
 const keyboardButtons = document.querySelectorAll(".keyboard button");
 const displayInput = document.querySelector('[name="amount"]');
@@ -6,6 +7,7 @@ const displayInput = document.querySelector('[name="amount"]');
 keyboardButtons.forEach((button) => {
   button.addEventListener("click", function (event) {
     if (event.target.getAttribute("data-value") == "enter") {
+      calculateChange.calculate();
       return null;
     }
     if (event.target.getAttribute("data-value") == "del") {
@@ -29,6 +31,9 @@ document.addEventListener(
     if (event.code == "Backspace") {
       displayControls.clearInput();
     }
+    if (event.code == "Enter") {
+      calculateChange.calculate();
+    }
   },
   false
 );
@@ -38,7 +43,7 @@ const displayControls = {
     displayInput.value = "";
   },
   enterNumber: function (value) {
-    if (displayInput.value == "" && value == "0") return null;
+    if (inputIsEmpty(displayInput.value) && value == "0") return null;
 
     if (this.checkIsMaxAmount(value)) return null;
 

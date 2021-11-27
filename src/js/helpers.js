@@ -9,3 +9,7 @@ export function notifyUser(text) {
     },
   }).showToast();
 }
+
+export function inputIsEmpty(value) {
+  return value == "";
+}
