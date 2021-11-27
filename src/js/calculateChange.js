@@ -1,5 +1,6 @@
 import { inputIsEmpty, notifyUser } from "./helpers";
 import terminal from "./terminal";
+import drawBalance from "./drawBalance";
 
 const calculateChange = {
   displayInput: document.querySelector('[name="amount"]'),
@@ -34,9 +35,10 @@ const calculateChange = {
         banknote,
         amount
       );
-
-      console.log(change);
     }
+    amount > 0
+      ? notifyUser("not enough cash in terminal")
+      : this.updateAmountInTerminal(change);
   },
   updateAmountValue: function (
     desiredAmount,
@@ -58,8 +60,16 @@ const calculateChange = {
         : terminal.banknotes[banknote].amount
     );
   },
-  checkBanknoteAvailability: function (desiredAmount) {
-    desiredAmount;
+  updateAmountInTerminal: function (change) {
+    let banknoteArray = [];
+    for (let banknote in change) {
+      terminal.banknotes[banknote].amount -= change[banknote];
+      banknoteArray.push({
+        name: banknote,
+        amount: terminal.banknotes[banknote].amount - change[banknote],
+      });
+    }
+    drawBalance.insertInTable();
   },
 };
 
