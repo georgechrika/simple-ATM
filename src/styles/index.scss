@@ -119,3 +119,32 @@ body {
     }
   }
 }
+#popup {
+  width: 90vw;
+  height: 90vh;
+  border-radius: 20px;
+  background-color: $secondary-bg;
+  color: $secondary-color;
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transform: scale(0);
+  display: none;
+  transition: 0.2s;
+  .banknote-holder {
+    height: 90%;
+  }
+  h1 {
+    text-align: center;
+  }
+  img {
+    height: 80px;
+  }
+}
+#popup.active {
+  transform: scale(1);
+  display: block;
+}
