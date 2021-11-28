@@ -1,4 +1,4 @@
-import terminal from "./terminal";
+import atm from "./atm";
 
 const drawBalance = {
   tableBody: document.querySelector("#tableBody"),
@@ -17,7 +17,7 @@ const drawBalance = {
     return html;
   },
   insertInTable: function () {
-    this.tableBody.innerHTML = this.drawTable(terminal.banknotes);
+    this.tableBody.innerHTML = this.drawTable(atm.banknotes);
   },
 };
 

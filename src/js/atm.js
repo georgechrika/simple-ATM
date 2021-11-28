@@ -1,4 +1,4 @@
-const terminal = {
+const atm = {
   banknotes: {
     lari: { amount: 0, accumulatorValue: 1, geoName: "ლარი" },
     lari5: { amount: 0, accumulatorValue: 5, geoName: "5 ლარი" },
@@ -15,4 +15,4 @@ const terminal = {
   },
 };
 
-export default terminal;
+export default atm;

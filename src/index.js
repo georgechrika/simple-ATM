@@ -1,6 +1,6 @@
-import terminal from "./js/terminal";
+import atm from "./js/atm";
 import drawBalance from "./js/drawBalance";
-import * as keyboard from "./js/terminalKeyboard";
+import * as keyboard from "./js/atmKeyboard";
 import calculateChange from "./js/calculateChange";
 
 //banknotes array of objects
@@ -14,5 +14,5 @@ let banknoteSampleArray = [
   { name: "lari50", amount: 10 },
   { name: "lari100", amount: 4 },
 ];
-terminal.refill(banknoteSampleArray);
+atm.refill(banknoteSampleArray);
 drawBalance.insertInTable();

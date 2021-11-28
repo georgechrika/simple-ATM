@@ -1,5 +1,5 @@
 import { inputIsEmpty, notifyUser } from "./helpers";
-import terminal from "./terminal";
+import atm from "./atm";
 import drawBalance from "./drawBalance";
 
 const calculateChange = {
@@ -20,13 +20,13 @@ const calculateChange = {
   checkAvailability: function (desiredAmount) {
     let amount = desiredAmount;
     let change = {};
-    for (let banknote of terminal.banknotesSorted) {
+    for (let banknote of atm.banknotesSorted) {
       const desiredAmount =
-        Math.floor(amount / terminal.banknotes[banknote].accumulatorValue) *
-        terminal.banknotes[banknote].accumulatorValue;
+        Math.floor(amount / atm.banknotes[banknote].accumulatorValue) *
+        atm.banknotes[banknote].accumulatorValue;
       const availableAmount =
-        terminal.banknotes[banknote].amount *
-        terminal.banknotes[banknote].accumulatorValue;
+        atm.banknotes[banknote].amount *
+        atm.banknotes[banknote].accumulatorValue;
 
       change[banknote] = this.calculateBanknoteAmount(amount, banknote);
       amount = this.updateAmountValue(
@@ -37,8 +37,8 @@ const calculateChange = {
       );
     }
     amount > 0
-      ? notifyUser("not enough cash in terminal")
-      : this.updateAmountInTerminal(change);
+      ? notifyUser("not enough cash in atm")
+      : this.updateAmountInatm(change);
   },
   updateAmountValue: function (
     desiredAmount,
@@ -49,21 +49,21 @@ const calculateChange = {
     return desiredAmount - availableAmount > 0
       ? amount - availableAmount
       : amount -
-          Math.floor(amount / terminal.banknotes[banknote].accumulatorValue) *
-            terminal.banknotes[banknote].accumulatorValue;
+          Math.floor(amount / atm.banknotes[banknote].accumulatorValue) *
+            atm.banknotes[banknote].accumulatorValue;
   },
   calculateBanknoteAmount: function (amount, banknote) {
     return Math.floor(
-      amount / terminal.banknotes[banknote].accumulatorValue <=
-        terminal.banknotes[banknote].amount
-        ? Math.floor(amount / terminal.banknotes[banknote].accumulatorValue)
-        : terminal.banknotes[banknote].amount
+      amount / atm.banknotes[banknote].accumulatorValue <=
+        atm.banknotes[banknote].amount
+        ? Math.floor(amount / atm.banknotes[banknote].accumulatorValue)
+        : atm.banknotes[banknote].amount
     );
   },
-  updateAmountInTerminal: function (change) {
+  updateAmountInatm: function (change) {
     let banknoteArray = [];
     for (let banknote in change) {
-      terminal.banknotes[banknote].amount -= change[banknote];
+      atm.banknotes[banknote].amount -= change[banknote];
     }
     drawBalance.insertInTable();
   },
