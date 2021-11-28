@@ -1,11 +1,11 @@
 const atm = {
   banknotes: {
-    lari: { amount: 0, accumulatorValue: 1, geoName: "ლარი" },
-    lari5: { amount: 0, accumulatorValue: 5, geoName: "5 ლარი" },
-    lari10: { amount: 0, accumulatorValue: 10, geoName: "10 ლარი" },
-    lari20: { amount: 0, accumulatorValue: 20, geoName: "20 ლარი" },
-    lari50: { amount: 0, accumulatorValue: 50, geoName: "50 ლარი" },
-    lari100: { amount: 0, accumulatorValue: 100, geoName: "100 ლარი" },
+    lari: { amount: 0, accumulatorValue: 1, imgName: "lari1" },
+    lari5: { amount: 0, accumulatorValue: 5, imgName: "lari5" },
+    lari10: { amount: 0, accumulatorValue: 10, imgName: "lari10" },
+    lari20: { amount: 0, accumulatorValue: 20, imgName: "lari20" },
+    lari50: { amount: 0, accumulatorValue: 50, imgName: "lari50" },
+    lari100: { amount: 0, accumulatorValue: 100, imgName: "lari100" },
   },
   banknotesSorted: ["lari100", "lari50", "lari20", "lari10", "lari5", "lari"],
   refill: function (banknotes) {
