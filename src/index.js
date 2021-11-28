@@ -16,4 +16,3 @@ let banknoteSampleArray = [
 ];
 terminal.refill(banknoteSampleArray);
 drawBalance.insertInTable();
-calculateChange.checkAvailability(534);

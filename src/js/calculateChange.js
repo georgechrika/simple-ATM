@@ -64,10 +64,6 @@ const calculateChange = {
     let banknoteArray = [];
     for (let banknote in change) {
       terminal.banknotes[banknote].amount -= change[banknote];
-      banknoteArray.push({
-        name: banknote,
-        amount: terminal.banknotes[banknote].amount - change[banknote],
-      });
     }
     drawBalance.insertInTable();
   },
