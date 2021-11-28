@@ -1,6 +1,7 @@
 import { inputIsEmpty, notifyUser } from "./helpers";
 import atm from "./atm";
 import drawBalance from "./drawBalance";
+import { drawChange } from "./drawBalance";
 
 const calculateChange = {
   displayInput: document.querySelector('[name="amount"]'),
@@ -36,9 +37,10 @@ const calculateChange = {
         amount
       );
     }
-    amount > 0
-      ? notifyUser("not enough cash in atm")
-      : this.updateAmountInatm(change);
+    if (amount > 0) return notifyUser("not enough cash in atm");
+
+    drawChange(change);
+    this.updateAmountInatm(change);
   },
   updateAmountValue: function (
     desiredAmount,
